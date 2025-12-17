@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - SweetShoes</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="pink-header">
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-shoe-prints"></i>
+            <h1>SweetShoes</h1>
+        </div>
+        <nav>
+            <a href="/"><i class="fas fa-home"></i> Главная</a>
+            <a href="/catalog.html"><i class="fas fa-store"></i> Каталог</a>
+            <a href="/cart.html" class="active"><i class="fas fa-shopping-cart"></i> Корзина</a>
+            <a href="/login.html"><i class="fas fa-user"></i> Войти</a>
+        </nav>
+    </div>
+</header>
+
+<main class="cart-container container">
+    <h2 style="color: var(--pink-dark); margin-bottom: 30px;">
+        <i class="fas fa-shopping-cart"></i> Ваша корзина
+    </h2>
+
+    <div id="cart-items">
+        <!-- Товары в корзине -->
+        <div class="cart-item">
+            <div style="font-size: 30px; color: var(--pink);">
+                <i class="fas fa-shoe-prints"></i>
+            </div>
+            <div style="flex: 1;">
+                <h3>Пример товара</h3>
+                <p>Размер: 38 | Количество: 1</p>
+            </div>
+            <div style="font-weight: bold; color: var(--pink);">
+                2 999 ₽
+            </div>
+            <button style="background: none; border: none; color: var(--pink-dark); cursor: pointer;">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="cart-total">
+        Итого: <span id="total-price">0</span> ₽
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <button class="btn-pink" style="font-size: 18px; padding: 15px 40px;">
+            <i class="fas fa-check"></i> Оформить заказ
+        </button>
+    </div>
+</main>
+
+<footer class="pink-footer">
+    <div class="container">
+        <p class="copyright">© 2024 SweetShoes. Все права защищены 💖</p>
+    </div>
+</footer>
+</body>
+</html>

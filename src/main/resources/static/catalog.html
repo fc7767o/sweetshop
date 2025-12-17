@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - SweetShoes</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<header class="pink-header">
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-shoe-prints"></i>
+            <h1>SweetShoes</h1>
+        </div>
+        <nav>
+            <a href="/"><i class="fas fa-home"></i> Главная</a>
+            <a href="/catalog.html" class="active"><i class="fas fa-store"></i> Каталог</a>
+            <a href="/cart.html"><i class="fas fa-shopping-cart"></i> Корзина</a>
+            <a href="/login.html"><i class="fas fa-user"></i> Войти</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container" style="padding: 40px 0;">
+    <h2 style="color: var(--pink-dark); margin-bottom: 30px;">
+        <i class="fas fa-shoe-prints"></i> Каталог обуви
+    </h2>
+
+    <div class="products-grid" id="catalog-products">
+        <!-- Товары загрузятся через JS -->
+    </div>
+</main>
+
+<footer class="pink-footer">
+    <div class="container">
+        <p class="copyright">© 2024 SweetShoes. Все права защищены 💖</p>
+    </div>
+</footer>
+
+<script>
+    async function loadCatalog() {
+        try {
+            const response = await fetch('/api/products');
+            const products = await response.json();
+
+            const container = document.getElementById('catalog-products');
+            container.innerHTML = '';
+
+            products.forEach(product => {
+                const productCard = `
+                    <div class="product-card">
+                        <div class="product-image" style="background: #${Math.floor(Math.random()*16777215).toString(16)}22">
+                            <i class="fas fa-shoe-prints" style="color: #${Math.floor(Math.random()*16777215).toString(16)}"></i>
+                        </div>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p>${product.category || 'Обувь'}</p>
+                            <p><small>${product.brand || 'Бренд не указан'}</small></p>
+                            <div class="product-price">${product.price || '0'} ₽</div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i> Добавить
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += productCard;
+            });
+        } catch (error) {
+            console.error('Ошибка загрузки каталога:', error);
+            document.getElementById('catalog-products').innerHTML =
+                '<p style="text-align: center; color: var(--pink);">Ошибка загрузки товаров</p>';
+        }
+    }
+
+    function addToCart(productId) {
+        alert(`Товар ${productId} добавлен в корзину!`);
+    }
+
+    document.addEventListener('DOMContentLoaded', loadCatalog);
+</script>
+</body>
+</html>
