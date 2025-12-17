@@ -2,6 +2,7 @@ package com.shoestore.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "product_sizes")
@@ -12,6 +13,7 @@ public class ProductSize {
 
     @ManyToOne
     @JoinColumn(name = "product_id", nullable = false)
+    @JsonIgnore
     private Product product;
 
     @Column(nullable = false, precision = 4, scale = 1)

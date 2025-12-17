@@ -1,18 +1,22 @@
 package com.shoestore.controller;
 
 import com.shoestore.entity.Product;
+import com.shoestore.entity.ProductSize;
 import com.shoestore.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.shoestore.repository.ProductRepository;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
+
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -86,4 +90,5 @@ public class ProductController {
             return ResponseEntity.badRequest().body(error);
         }
     }
+
 }
